@@ -23,7 +23,8 @@ class RottenTomatoesAgent(Agent.Movies):
         if media.primary_metadata.title == r['title'] and media.primary_metadata.year == r['year']:
           rtID = r['id']
           break
-    if rtID: results.Append(MetadataSearchResult(id=rtID, score=100))
+    try: results.Append(MetadataSearchResult(id=rtID, score=100))
+    except: return
   
   def update(self, metadata, media, lang):
     rtMovie = JSON.ObjectFromURL(RT_API_BASE % ('movies/' + metadata.id + '.json', ''))
