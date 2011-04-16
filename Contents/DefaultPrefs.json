@@ -27,6 +27,34 @@
                 "label"    :        "Get Summary",
                 "type"     :        "bool",
                 "default"  :        "true"
+        },
+
+        {
+                "id"       :        "get_poster",
+                "label"    :        "Get Poster",
+                "type"     :        "bool",
+                "default"  :        "true"
+        },
+
+        {
+                "id"       :        "get_contentrating",
+                "label"    :        "Get MPAA Rating",
+                "type"     :        "bool",
+                "default"  :        "true"
+        }, 
+        
+        {
+                "id"       :        "get_directors",
+                "label"    :        "Get Directors",
+                "type"     :        "bool",
+                "default"  :        "true"
+        },
+        
+        {
+                "id"       :        "get_abridged_cast",
+                "label"    :        "Get (abridged) Cast",
+                "type"     :        "bool",
+                "default"  :        "true"
         }
 
 ]
