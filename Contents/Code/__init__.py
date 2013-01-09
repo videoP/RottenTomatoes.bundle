@@ -1,7 +1,7 @@
 RT_API_BASE = 'http://api.rottentomatoes.com/api/public/v1.0/%s?apikey=twdg3rv2zeesn29thmx58sky%s'
 
 def Start():
-	HTTP.CacheTime = CACHE_1DAY
+	HTTP.CacheTime = CACHE_1WEEK
 
 class RottenTomatoesAgent(Agent.Movies):
 	name = 'Rotten Tomatoes'
@@ -11,13 +11,13 @@ class RottenTomatoesAgent(Agent.Movies):
 
 	def search(self, results, media, lang):
 		imdb_id = media.primary_metadata.id.strip('t')
-		rtSearch = JSON.ObjectFromURL(RT_API_BASE % ('movie_alias.json', '&type=imdb&id=' + imdb_id))
+		rtSearch = JSON.ObjectFromURL(RT_API_BASE % ('movie_alias.json', '&type=imdb&id=' + imdb_id), sleep=2.0)
 
 		if 'error' not in rtSearch:
 			results.Append(MetadataSearchResult(id=str(rtSearch['id']), score=100))
 
 	def update(self, metadata, media, lang):
-		rtMovie = JSON.ObjectFromURL(RT_API_BASE % ('movies/' + metadata.id + '.json', ''))
+		rtMovie = JSON.ObjectFromURL(RT_API_BASE % ('movies/' + metadata.id + '.json', ''), sleep=2.0)
 
 		# get ratings
 		if Prefs['get_rating']:
