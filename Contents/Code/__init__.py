@@ -13,7 +13,7 @@ class RottenTomatoesAgent(Agent.Movies):
 		imdb_id = media.primary_metadata.id.strip('t')
 		rtSearch = JSON.ObjectFromURL(RT_API_BASE % ('movie_alias.json', '&type=imdb&id=' + imdb_id))
 
-		if not rtSearch.has_key('error'):
+		if 'error' not in rtSearch:
 			results.Append(MetadataSearchResult(id=str(rtSearch['id']), score=100))
 
 	def update(self, metadata, media, lang):
@@ -23,14 +23,10 @@ class RottenTomatoesAgent(Agent.Movies):
 		if Prefs['get_rating']:
 			if Prefs['rating_type'] == 'Tomatometer':
 				try: metadata.rating = float(rtMovie['ratings']['critics_score'])/10
-				except:
-					try: metadata.rating = float(rtMovie['ratings']['audience_score'])/10
-					except: pass
+				except: metadata.rating = None
 			else:
 				try: metadata.rating = float(rtMovie['ratings']['audience_score'])/10
-				except:
-					try: metadata.rating = float(rtMovie['ratings']['critics_score'])/10
-					except: pass
+				except: metadata.rating = None
 		else:
 			metadata.rating = None
 
@@ -44,19 +40,34 @@ class RottenTomatoesAgent(Agent.Movies):
 		if Prefs['get_summary']:
 			if len(rtMovie) > 0:
 				metadata.summary = rtMovie['synopsis']
+		else:
+			metadata.summary = ''
 
 		# get poster
+		poster = rtMovie['posters']['original']
 		if Prefs['get_poster']:
-			poster = rtMovie['posters']['original']
 			if poster not in metadata.posters:
 				metadata.posters[poster] = Proxy.Media(HTTP.Request(poster))
+		else:
+			del metadata.posters[poster]
 
 		# get mpaa rating
 		if Prefs['get_contentrating']:
 			metadata.content_rating = rtMovie['mpaa_rating']
+		else:
+			metadata.content_rating = None
 
-		# get abridged directors
+		# get directors
+		metadata.directors.clear()
 		if Prefs['get_directors']:
-			metadata.directors.clear()
 			for d in rtMovie['abridged_directors']:
 				metadata.directors.add(d['name'])
+
+		# get cast
+		metadata.roles.clear()
+		if Prefs['get_abridged_cast']:
+			for c in rtMovie['abridged_cast']:
+				role = metadata.roles.new()
+				try: role.role = c['characters'][0]
+				except: role.role = c['name']
+				role.actor = c['name']

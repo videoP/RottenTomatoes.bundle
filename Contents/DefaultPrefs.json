@@ -44,5 +44,11 @@
 		"label": "Get Directors",
 		"type": "bool",
 		"default": "true"
+	},
+	{
+		"id": "get_abridged_cast",
+		"label": "Get Cast",
+		"type": "bool",
+		"default": "true"
 	}
 ]
