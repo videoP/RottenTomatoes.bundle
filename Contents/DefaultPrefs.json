@@ -1,60 +1,48 @@
 [
-
-        {
-                "id"       :        "get_rating",
-                "label"    :        "Get Rating",
-                "type"     :        "bool",
-                "default"  :        "true"
-        },
-
-        {
-                "id"       :        "rating_type",
-                "label"    :        "Rating Type",
-                "type"     :        "enum",
-                "values"   :       ["Average Rating","Tomatometer"],
-                "default"  :        "Average Rating"
-        },
-
-        {
-                "id"       :        "get_genres",
-                "label"    :        "Get Genres",
-                "type"     :        "bool",
-                "default"  :        "true"
-        },
-
-        {
-                "id"       :        "get_summary",
-                "label"    :        "Get Summary",
-                "type"     :        "bool",
-                "default"  :        "true"
-        },
-
-        {
-                "id"       :        "get_poster",
-                "label"    :        "Get Poster",
-                "type"     :        "bool",
-                "default"  :        "true"
-        },
-
-        {
-                "id"       :        "get_contentrating",
-                "label"    :        "Get MPAA Rating",
-                "type"     :        "bool",
-                "default"  :        "true"
-        }, 
-        
-        {
-                "id"       :        "get_directors",
-                "label"    :        "Get Directors",
-                "type"     :        "bool",
-                "default"  :        "true"
-        },
-        
-        {
-                "id"       :        "get_abridged_cast",
-                "label"    :        "Get (abridged) Cast",
-                "type"     :        "bool",
-                "default"  :        "true"
-        }
-
+	{
+		"id": "get_rating",
+		"label": "Get Rating",
+		"type": "bool",
+		"default": "true"
+	},
+	{
+		"id": "rating_type",
+		"label": "Rating Type",
+		"type": "enum",
+		"values": [
+			"Average Rating",
+			"Tomatometer"
+		],
+		"default": "Average Rating"
+	},
+	{
+		"id": "get_genres",
+		"label": "Get Genres",
+		"type": "bool",
+		"default": "true"
+	},
+	{
+		"id": "get_summary",
+		"label": "Get Summary",
+		"type": "bool",
+		"default": "true"
+	},
+	{
+		"id": "get_poster",
+		"label": "Get Poster",
+		"type": "bool",
+		"default": "true"
+	},
+	{
+		"id": "get_contentrating",
+		"label": "Get MPAA Rating",
+		"type": "bool",
+		"default": "true"
+	},
+	{
+		"id": "get_directors",
+		"label": "Get Directors",
+		"type": "bool",
+		"default": "true"
+	}
 ]
