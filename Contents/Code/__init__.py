@@ -36,13 +36,6 @@ class RottenTomatoesAgent(Agent.Movies):
 			for g in rtMovie['genres']:
 				metadata.genres.add(g)
 
-		# get summary
-		if Prefs['get_summary']:
-			if len(rtMovie) > 0:
-				metadata.summary = rtMovie['synopsis']
-		else:
-			metadata.summary = ''
-
 		# get poster
 		poster = rtMovie['posters']['original']
 		if Prefs['get_poster']:

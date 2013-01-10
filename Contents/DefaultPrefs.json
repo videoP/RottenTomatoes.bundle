@@ -22,12 +22,6 @@
 		"default": "true"
 	},
 	{
-		"id": "get_summary",
-		"label": "Get Summary",
-		"type": "bool",
-		"default": "true"
-	},
-	{
 		"id": "get_poster",
 		"label": "Get Poster",
 		"type": "bool",
