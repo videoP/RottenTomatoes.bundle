@@ -22,11 +22,14 @@ class RottenTomatoesAgent(Agent.Movies):
 		# get ratings
 		if Prefs['get_rating']:
 			if Prefs['rating_type'] == 'Tomatometer':
-				try: metadata.rating = float(rtMovie['ratings']['critics_score'])/10
-				except: metadata.rating = None
+				rating = rtMovie['ratings']['critics_score']
 			else:
-				try: metadata.rating = float(rtMovie['ratings']['audience_score'])/10
-				except: metadata.rating = None
+				rating = rtMovie['ratings']['audience_score']
+
+			if rating is not None and rating > 0:
+				metadata.rating = float(rating)/10
+			else:
+				metadata.rating = None
 		else:
 			metadata.rating = None
 
