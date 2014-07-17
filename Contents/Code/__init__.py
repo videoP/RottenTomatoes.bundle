@@ -1,4 +1,4 @@
-RT_API_BASE = 'http://api.rottentomatoes.com/api/public/v1.0/%s?apikey=twdg3rv2zeesn29thmx58sky%s'
+RT_API_BASE = 'http://rt.plex.tv/api/public/v1.0/%s?apikey=gr66mbcjxezddama5w3vaxcb%s'
 
 def Start():
 	HTTP.CacheTime = CACHE_1WEEK
