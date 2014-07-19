@@ -43,9 +43,9 @@ class RottenTomatoesAgent(Agent.Movies):
 		poster = rtMovie['posters']['original']
 		del metadata.posters[poster] # Make sure we remove any old, previously downloaded small poster (*_tmb.jpg)
 
-		if Prefs['get_poster']:
-			poster = poster.replace('_tmb.jpg', '_xxl.jpg')
+		poster = poster.replace('_tmb.jpg', '_xxl.jpg')
 
+		if Prefs['get_poster']:
 			if poster not in metadata.posters:
 				metadata.posters[poster] = Proxy.Media(HTTP.Request(poster))
 		else:
