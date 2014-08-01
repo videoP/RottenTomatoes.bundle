@@ -1,4 +1,4 @@
-RT_API_BASE = 'http://rt.plex.tv/api/public/v1.0/%s?apikey=gr66mbcjxezddama5w3vaxcb%s'
+RT_API_BASE = 'http://rt.plex.tv/api/public/v1.0/%s?apikey=gr66mbcjxezddama5w3vaxbc%s'
 
 def Start():
 	HTTP.CacheTime = CACHE_1WEEK
