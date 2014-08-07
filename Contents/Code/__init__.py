@@ -1,4 +1,7 @@
-RT_API_BASE = 'http://rt.plex.tv/api/public/v1.0/%s?apikey=gr66mbcjxezddama5w3vaxbc%s'
+RT_API_KEY = 'gr66mbcjxezddama5w3vaxcb'
+RT_MOVIE_URL = 'http://rt.plex.tv/api/public/v1.0/movies/%s.json?apikey=' + RT_API_KEY
+RT_ALIAS_URL = 'http://rt.plex.tv/api/public/v1.0/movie_alias.json?id=%s&type=imdb&apikey=' + RT_API_KEY
+
 
 def Start():
 	HTTP.CacheTime = CACHE_1WEEK
@@ -11,13 +14,13 @@ class RottenTomatoesAgent(Agent.Movies):
 
 	def search(self, results, media, lang):
 		imdb_id = media.primary_metadata.id.strip('t')
-		rtSearch = JSON.ObjectFromURL(RT_API_BASE % ('movie_alias.json', '&type=imdb&id=' + imdb_id), sleep=2.0)
+		rtSearch = JSON.ObjectFromURL(RT_ALIAS_URL % imdb_id, sleep=2.0)
 
 		if 'error' not in rtSearch:
 			results.Append(MetadataSearchResult(id=str(rtSearch['id']), score=100))
 
 	def update(self, metadata, media, lang):
-		rtMovie = JSON.ObjectFromURL(RT_API_BASE % ('movies/' + metadata.id + '.json', ''), sleep=2.0)
+		rtMovie = JSON.ObjectFromURL(RT_MOVIE_URL % metadata.id, sleep=2.0)
 
 		# get ratings
 		if Prefs['get_rating']:
