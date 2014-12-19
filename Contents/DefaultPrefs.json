@@ -19,30 +19,30 @@
 		"id": "get_genres",
 		"label": "Get Genres",
 		"type": "bool",
-		"default": "true"
+		"default": "false"
 	},
 	{
 		"id": "get_poster",
 		"label": "Get Poster",
 		"type": "bool",
-		"default": "true"
+		"default": "false"
 	},
 	{
 		"id": "get_contentrating",
 		"label": "Get MPAA Rating",
 		"type": "bool",
-		"default": "true"
+		"default": "false"
 	},
 	{
 		"id": "get_directors",
 		"label": "Get Directors",
 		"type": "bool",
-		"default": "true"
+		"default": "false"
 	},
 	{
 		"id": "get_abridged_cast",
 		"label": "Get Cast",
 		"type": "bool",
-		"default": "true"
+		"default": "false"
 	}
 ]
