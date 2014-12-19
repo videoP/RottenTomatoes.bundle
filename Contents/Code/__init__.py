@@ -43,6 +43,12 @@ class RottenTomatoesAgent(Agent.Movies):
 		else:
 			metadata.rating = None
 
+		# get synopsis
+		if Prefs['get_synopsis'] and 'synopsis' in rt_movie and rt_movie['synopsis'] and rt_movie['synopsis'] != "":
+			metadata.summary = rt_movie['synopsis'].rsplit(' -- (')[0]
+		else:
+			metadata.summary = None
+
 		# get genres
 		metadata.genres.clear()
 		if Prefs['get_genres']:
@@ -59,7 +65,7 @@ class RottenTomatoesAgent(Agent.Movies):
 			if poster not in metadata.posters:
 				metadata.posters[poster] = Proxy.Media(HTTP.Request(poster))
 		else:
-			del metadata.posters[poster]
+			metadata.posters.validate_keys([])
 
 		# get mpaa rating
 		if Prefs['get_contentrating']:

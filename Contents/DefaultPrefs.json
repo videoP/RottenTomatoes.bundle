@@ -16,6 +16,12 @@
 		"default": "Average Rating"
 	},
 	{
+		"id": "get_synopsis",
+		"label": "Get Synopsis",
+		"type": "bool",
+		"default": "false"
+	},
+	{
 		"id": "get_genres",
 		"label": "Get Genres",
 		"type": "bool",
