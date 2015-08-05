@@ -10,10 +10,10 @@
 		"label": "Rating Type",
 		"type": "enum",
 		"values": [
-			"Average Rating",
+			"Audience Score",
 			"Tomatometer"
 		],
-		"default": "Average Rating"
+		"default": "Audience Score"
 	},
 	{
 		"id": "get_synopsis",
